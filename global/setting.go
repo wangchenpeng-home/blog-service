@@ -4,6 +4,6 @@ import "github.com/wangchenpeng-home/blog-service/pkg/setting"
 
 var (
 	ServerSetting   *setting.ServerSettingS
-	AddSetting      *setting.AppSettingS
+	AppSetting      *setting.AppSettingS
 	DatabaseSetting *setting.DatabaseSettingS
 )
