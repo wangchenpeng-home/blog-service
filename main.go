@@ -25,11 +25,10 @@ func main() {
 		WriteTimeout:      global.ServerSetting.WriteTimeout,
 		MaxHeaderBytes:    1 << 20,
 	}
-
+	
 	log.Printf("global.ServerSetting: %v", global.ServerSetting)
 	log.Printf("global.ServerSetting: %v", global.AppSetting)
 	log.Printf("global.ServerSetting: %v", global.DatabaseSetting)
-	
 	s.ListenAndServe()
 }
 
