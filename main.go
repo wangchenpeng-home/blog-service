@@ -14,6 +14,11 @@ func init() {
 	if err != nil {
 		log.Fatalf("init.setupSetting err: %v", err)
 	}
+
+	err = setDBEngine()
+	if err != nil {
+		log.Fatalf("init.setDBEngine err: %v", err)
+	}
 }
 
 func main() {
@@ -52,5 +57,9 @@ func setupSetting() error {
 
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
+	return nil
+}
+
+func setDBEngine() error {
 	return nil
 }
