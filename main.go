@@ -6,6 +6,10 @@ import (
 	"time"
 )
 
+func init() {
+	err := setupSetting()
+}
+
 func main() {
 	router := routers.NewRouter()
 	s := &http.Server{

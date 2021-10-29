@@ -2,7 +2,10 @@ module github.com/wangchenpeng-home/blog-service
 
 go 1.17
 
-require github.com/gin-gonic/gin v1.6.3
+require (
+	github.com/gin-gonic/gin v1.6.3
+	github.com/spf13/viper v1.4.0
+)
 
 require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
@@ -24,7 +27,6 @@ require (
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/viper v1.4.0 // indirect
 	github.com/ugorji/go/codec v1.2.6 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/sys v0.0.0-20211025201205-69cdffdb9359 // indirect
