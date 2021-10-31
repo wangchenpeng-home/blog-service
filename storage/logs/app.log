@@ -1,0 +1,2 @@
+2021/10/31 14:39:42 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 26 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1635662382135908000}
+2021/10/31 14:46:16 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 26 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1635662776000833000}
