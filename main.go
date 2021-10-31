@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/wangchenpeng-home/blog-service/global"
+	"github.com/wangchenpeng-home/blog-service/internal/model"
 	"github.com/wangchenpeng-home/blog-service/internal/routers"
 	setting2 "github.com/wangchenpeng-home/blog-service/pkg/setting"
 	"log"
@@ -61,5 +62,11 @@ func setupSetting() error {
 }
 
 func setDBEngine() error {
+	var err error
+	global.DBEngine, err = model.NewDBEngine(global.DatabaseSetting)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
