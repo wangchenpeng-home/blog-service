@@ -2,7 +2,8 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	v1 "github.com/wangchenpeng-home/blog-service/internal/routers/avi/v1"
+	"github.com/wangchenpeng-home/blog-service/internal/middleware"
+	v1 "github.com/wangchenpeng-home/blog-service/internal/routers/api/v1"
 )
 
 func NewRouter() *gin.Engine {
@@ -10,6 +11,7 @@ func NewRouter() *gin.Engine {
 	//加载两个中间件
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(middleware.Translations())
 
 	article := v1.NewArticle()
 	tag := v1.NewTag()
