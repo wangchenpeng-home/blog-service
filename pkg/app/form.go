@@ -33,6 +33,7 @@ func (v ValidErrors) Errors() []string {
 
 // todo 此处看不懂
 
+
 func BindAndValid(c *gin.Context, v interface{}) (bool, ValidErrors) {
 	var errs ValidErrors
 	err := c.ShouldBind(v)
