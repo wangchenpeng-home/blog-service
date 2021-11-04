@@ -14,6 +14,7 @@ func NewRouter() *gin.Engine {
 	//加载两个中间件
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	//注册翻译中间件
 	r.Use(middleware.Translations())
 	//增加接口文档查看
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
