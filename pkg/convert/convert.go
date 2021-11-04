@@ -2,8 +2,7 @@ package convert
 
 import "strconv"
 
-// 类型转换
-
+// StrTo 类型转换
 type StrTo string
 
 func (s StrTo) String() string {

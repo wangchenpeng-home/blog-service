@@ -2,6 +2,9 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
+	_ "github.com/wangchenpeng-home/blog-service/docs"
 	"github.com/wangchenpeng-home/blog-service/internal/middleware"
 	v1 "github.com/wangchenpeng-home/blog-service/internal/routers/api/v1"
 )
@@ -12,6 +15,8 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
+	//增加接口文档查看
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	article := v1.NewArticle()
 	tag := v1.NewTag()

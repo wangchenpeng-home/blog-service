@@ -99,6 +99,14 @@ func (l *Logger) WithCallersFrames() *Logger {
 	minCallerDepth := 1
 	var callers []string
 	pcs := make([]uintptr, maxCallerDepth)
+
+	//调用者用调用goroutine的堆栈上函数调用的返回程序计数器填充切片pc。
+	//参数skip是在pc中记录之前要跳过的堆栈帧数，0表示调用者本身的帧，1表示调用者的调用者。
+	//它返回写入pc的条目数。
+	//要将这些pc转换成符号信息，如函数名和行号，请使用CallersFrames。
+	//CallersFrames解释内联函数，并将返回的程序计数器调整为调用程序计数器。
+	//直接在返回的pc上迭代是不鼓励的，就像在任何返回的pc上使用FuncForPC一样，
+	//因为这些不能解释内联或返回程序计数器的调整。
 	depth := runtime.Callers(minCallerDepth, pcs)
 	frames := runtime.CallersFrames(pcs[:depth])
 	for frame, more := frames.Next(); more; frame, more = frames.Next() {
