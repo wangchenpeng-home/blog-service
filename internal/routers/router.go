@@ -21,6 +21,10 @@ func NewRouter() *gin.Engine {
 
 	article := v1.NewArticle()
 	tag := v1.NewTag()
+	upload := v1.NewUpload()
+
+	r.POST("/upload/file", upload.UploadFile)
+
 	apiV1 := r.Group("/api/v1")
 	{
 		apiV1.POST("/tags", tag.Create)

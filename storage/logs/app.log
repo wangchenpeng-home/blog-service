@@ -53,3 +53,19 @@
 2021/11/05 11:19:23 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 26 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636082363894040000}
 2021/11/05 11:19:41 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 26 main.init.0"],"level":"info","message":"app.BindAndValid success","time":1636082381252926000}
 2021/11/05 11:19:41 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 26 main.init.0"],"level":"error","message":"svc.CreateTag err: Error 1054: Unknown column 'created_by' in 'field list'","time":1636082381255330000}
+2021/11/05 14:36:29 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636094189851211000}
+2021/11/05 14:36:46 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"info","message":"app.BindAndValid success","time":1636094206679090000}
+2021/11/05 14:36:46 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"error","message":"svc.CreateTag err: Error 1054: Unknown column 'modified_by' in 'field list'","time":1636094206681813000}
+2021/11/05 14:46:49 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"info","message":"app.BindAndValid success","time":1636094809057259000}
+2021/11/05 14:47:45 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"info","message":"app.BindAndValid success","time":1636094865217135000}
+2021/11/05 14:48:02 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"info","message":"app.BindAndValid success","time":1636094882734951000}
+2021/11/05 17:53:13 {"callers":null,"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636105993384823000}
+2021/11/05 17:53:27 {"callers":null,"level":"error","message":"app.BindAndValid errs: Name must be at least 3 characters in length","time":1636106007345305000}
+2021/11/05 17:53:33 {"callers":null,"level":"error","message":"app.BindAndValid errs: Name must be at least 3 characters in length,CreateBy is a required field","time":1636106013856039000}
+2021/11/05 18:44:47 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 26 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636109087798905000}
+2021/11/05 18:52:01 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 26 main.init.0"],"level":"error","message":"svc.UploadFile err: file suffix is not supported","time":1636109521410865000}
+2021/11/05 18:56:51 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636109811880434000}
+2021/11/05 18:57:17 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"error","message":"svc.UploadFile err: 12acd14e73603d7c8860624f02021b15file suffix is not supported","time":1636109837471722000}
+2021/11/05 18:58:12 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636109892452251000}
+2021/11/05 18:59:28 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"error","message":"svc.UploadFile err: 12acd14e73603d7c8860624f02021b15file suffix is not supported","time":1636109968579658000}
+2021/11/05 19:00:58 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 27 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636110058394023000}

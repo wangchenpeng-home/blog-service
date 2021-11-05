@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/wangchenpeng-home/blog-service/global"
 	"github.com/wangchenpeng-home/blog-service/internal/model"
 	"github.com/wangchenpeng-home/blog-service/internal/routers"
@@ -59,6 +60,7 @@ func setupSetting() error {
 		return err
 	}
 	err = setting.ReadSection("App", &global.AppSetting)
+	fmt.Println(global.AppSetting)
 	if err != nil {
 		return err
 	}
