@@ -31,11 +31,9 @@ func (v ValidErrors) Errors() []string {
 	return errs
 }
 
-// todo 此处看不懂
-
-
 func BindAndValid(c *gin.Context, v interface{}) (bool, ValidErrors) {
 	var errs ValidErrors
+	// ShouldBind(v) 将v绑定，如果不进行输入，将会报错
 	err := c.ShouldBind(v)
 	if err != nil {
 		v := c.Value("trans")
