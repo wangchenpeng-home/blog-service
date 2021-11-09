@@ -11,6 +11,9 @@ github.com/PuerkitoBio/urlesc
 ## explicit
 github.com/alecthomas/template
 github.com/alecthomas/template/parse
+# github.com/dgrijalva/jwt-go v3.2.0+incompatible
+## explicit
+github.com/dgrijalva/jwt-go
 # github.com/fsnotify/fsnotify v1.5.1
 ## explicit; go 1.13
 github.com/fsnotify/fsnotify

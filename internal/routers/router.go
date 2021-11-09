@@ -5,8 +5,10 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	_ "github.com/wangchenpeng-home/blog-service/docs"
+	"github.com/wangchenpeng-home/blog-service/global"
 	"github.com/wangchenpeng-home/blog-service/internal/middleware"
 	v1 "github.com/wangchenpeng-home/blog-service/internal/routers/api/v1"
+	"net/http"
 )
 
 func NewRouter() *gin.Engine {
@@ -24,7 +26,7 @@ func NewRouter() *gin.Engine {
 	upload := v1.NewUpload()
 
 	r.POST("/upload/file", upload.UploadFile)
-
+	r.StaticFS("/static", http.Dir(global.AppSetting.UpLoadSavePath))
 	apiV1 := r.Group("/api/v1")
 	{
 		apiV1.POST("/tags", tag.Create)

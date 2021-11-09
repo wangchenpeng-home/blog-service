@@ -27,3 +27,7 @@ Database:
   ParseTime: True
   MaxIdleConnes: 10
   MaxOpenConnes: 30
+JWT:
+  Secret: eddycjy
+  Issuer: blog-service
+  Expire: 7200
