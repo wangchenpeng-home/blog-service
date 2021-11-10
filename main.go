@@ -41,8 +41,8 @@ func main() {
 	}
 
 	log.Printf("global.ServerSetting: %v", global.ServerSetting)
-	log.Printf("global.ServerSetting: %v", global.AppSetting)
-	log.Printf("global.ServerSetting: %v", global.DatabaseSetting)
+	log.Printf("global.AppSetting: %v", global.AppSetting)
+	log.Printf("global.DatabaseSetting: %v", global.DatabaseSetting)
 
 	// 测试日志组件
 	global.Logger.Infof("%s: my-go-programming/%s", "eddycjy", "blog-service")

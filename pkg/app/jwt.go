@@ -3,7 +3,6 @@ package app
 import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/wangchenpeng-home/blog-service/global"
-	"github.com/wangchenpeng-home/blog-service/pkg/util"
 	"time"
 )
 
@@ -21,18 +20,19 @@ func GetJWTSecret() []byte {
 func GenerateToken(appKey, appSecret string) (string, error) {
 	nowTime := time.Now()
 	expireTime := nowTime.Add(global.JWTSetting.Expire)
+	token := jwt.New(jwt.SigningMethodHS256)
 	claims := Claims{
-		AppKey:    util.EncodeMD5(appKey),
-		AppSecret: util.EncodeMD5(appSecret),
+		AppKey:    appKey,
+		AppSecret: appSecret,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
 			Issuer:    global.JWTSetting.Issuer,
 		},
 	}
-
-	tokenClaims := jwt.NewWithClaims(jwt.SigningMethodES256, claims)
-	token, err := tokenClaims.SignedString(GetJWTSecret())
-	return token, err
+	token.Claims = claims
+	//tokenClaims := jwt.NewWithClaims(jwt.SigningMethodES256, claims)
+	tokenString, err := token.SignedString(GetJWTSecret())
+	return tokenString, err
 }
 
 // ParseToken 解析Token

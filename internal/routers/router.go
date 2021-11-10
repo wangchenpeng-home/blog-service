@@ -27,7 +27,9 @@ func NewRouter() *gin.Engine {
 
 	r.POST("/upload/file", upload.UploadFile)
 	r.StaticFS("/static", http.Dir(global.AppSetting.UpLoadSavePath))
+	r.GET("/auth", v1.GetAuth)
 	apiV1 := r.Group("/api/v1")
+	apiV1.Use(middleware.JWT())
 	{
 		apiV1.POST("/tags", tag.Create)
 		apiV1.DELETE("/tags:id", tag.Delete)
