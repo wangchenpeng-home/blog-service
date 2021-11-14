@@ -3,3 +3,8 @@
 2021/11/10 16:49:27 {"callers":null,"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636534167721970000}
 2021/11/10 16:49:30 {"callers":null,"level":"info","message":"access log: method: GET, status_code: 401, begin_time: 1636534170, end_time: 1636534170","time":1636534170932032000}
 2021/11/14 19:23:26 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 29 main.init.0"],"level":"info","message":"eddycjy: my-go-programming/blog-service","time":1636889006870343000}
+2021/11/14 19:39:23 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 29 main.init.0"],"level":"info","message":"wcp: programming/blog-service","time":1636889963885924000}
+2021/11/14 19:41:26 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 29 main.init.0"],"level":"info","message":"wcp: programming/blog-service","time":1636890086981072000}
+2021/11/14 19:41:34 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 29 main.init.0"],"level":"info","message":"access log: method: GET, status_code: 200, begin_time: 1636890094, end_time: 1636890094","time":1636890094679557000}
+2021/11/14 19:42:15 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 29 main.init.0"],"level":"error","message":"app.BindAndValid errs: %!v(MISSING)AppKey is a required field,AppSecret is a required field","time":1636890135626197000}
+2021/11/14 19:42:15 {"callers":["/Users/sh33027ml/wangchenpeng-home/blog-service/main.go: 29 main.init.0"],"level":"info","message":"access log: method: GET, status_code: 400, begin_time: 1636890135, end_time: 1636890135","time":1636890135626286000}

@@ -14,6 +14,9 @@ github.com/alecthomas/template/parse
 # github.com/dgrijalva/jwt-go v3.2.0+incompatible
 ## explicit
 github.com/dgrijalva/jwt-go
+# github.com/eddycjy/opentracing-gorm v0.0.0-20200209122056-516a807d2182
+## explicit
+github.com/eddycjy/opentracing-gorm
 # github.com/fsnotify/fsnotify v1.5.1
 ## explicit; go 1.13
 github.com/fsnotify/fsnotify
