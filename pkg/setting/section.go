@@ -34,6 +34,16 @@ type DatabaseSettingS struct {
 	MaxOpenConnes int
 }
 
+type EmailSettingS struct {
+	Host     string
+	Port     int
+	IsSSL    bool
+	UserName string
+	PassWord string
+	From     string
+	To       []string
+}
+
 type JWTSettingS struct {
 	Secret string
 	Issuer string //签发者

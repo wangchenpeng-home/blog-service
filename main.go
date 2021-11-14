@@ -1,12 +1,14 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/wangchenpeng-home/blog-service/global"
 	"github.com/wangchenpeng-home/blog-service/internal/model"
 	"github.com/wangchenpeng-home/blog-service/internal/routers"
 	"github.com/wangchenpeng-home/blog-service/pkg/logger"
 	setting2 "github.com/wangchenpeng-home/blog-service/pkg/setting"
+	"github.com/wangchenpeng-home/blog-service/pkg/tracer"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"
@@ -28,6 +30,11 @@ func init() {
 	if err != nil {
 		log.Fatalf("init.setupLogger err: %v", err)
 	}
+
+	err = setupTracer()
+	if err != nil {
+		log.Fatalf("init.setupTracer err: %v", err)
+	}
 }
 
 func main() {
@@ -45,7 +52,7 @@ func main() {
 	log.Printf("global.DatabaseSetting: %v", global.DatabaseSetting)
 
 	// 测试日志组件
-	global.Logger.Infof("%s: my-go-programming/%s", "eddycjy", "blog-service")
+	global.Logger.Infof(context.TODO(),"%s: my-go-programming/%s", "eddycjy", "blog-service")
 
 	s.ListenAndServe()
 }
@@ -69,6 +76,10 @@ func setupSetting() error {
 		return err
 	}
 	err = setting.ReadSection("JWT", &global.JWTSetting)
+	if err != nil {
+		return err
+	}
+	err = setting.ReadSection("Email", &global.EmailSetting)
 	if err != nil {
 		return err
 	}
@@ -98,5 +109,17 @@ func setupLogger() error {
 		MaxAge:    10,
 		LocalTime: true,
 	}, "", log.LstdFlags).WithCaller(2)
+	return nil
+}
+
+func setupTracer() error {
+	jaegerTracer, _, err := tracer.NewJaegerTracer(
+		"blog-service",
+		"127.0.0.1:8000",
+	)
+	if err != nil {
+		return err
+	}
+	global.Tracer = jaegerTracer
 	return nil
 }

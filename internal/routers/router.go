@@ -8,14 +8,32 @@ import (
 	"github.com/wangchenpeng-home/blog-service/global"
 	"github.com/wangchenpeng-home/blog-service/internal/middleware"
 	v1 "github.com/wangchenpeng-home/blog-service/internal/routers/api/v1"
+	"github.com/wangchenpeng-home/blog-service/pkg/limiter"
 	"net/http"
+	"time"
+)
+
+var methodLimiters = limiter.NewMethodLimiter().AddBuckets(
+	limiter.LimiterBucketRule{
+		Key:          "/auth",
+		FillInertval: time.Second,
+		Capacity:     10,
+		Quantum:      10,
+	},
 )
 
 func NewRouter() *gin.Engine {
 	r := gin.New()
-	//加载两个中间件
-	r.Use(gin.Logger())
-	r.Use(gin.Recovery())
+	if global.ServerSetting.RunMode == "debug" {
+		r.Use(gin.Logger())
+		r.Use(gin.Recovery())
+	} else {
+		r.Use(middleware.AccessLog())
+		r.Use(middleware.Recovery())
+	}
+	r.Use(middleware.RateLimiter(methodLimiters))
+	r.Use(middleware.ContextTimeout(60 * time.Second))
+	r.Use(middleware.Tracing())
 	//注册翻译中间件
 	r.Use(middleware.Translations())
 	//增加接口文档查看
@@ -29,6 +47,7 @@ func NewRouter() *gin.Engine {
 	r.StaticFS("/static", http.Dir(global.AppSetting.UpLoadSavePath))
 	r.GET("/auth", v1.GetAuth)
 	apiV1 := r.Group("/api/v1")
+	// 注册JWT加密中间件
 	apiV1.Use(middleware.JWT())
 	{
 		apiV1.POST("/tags", tag.Create)

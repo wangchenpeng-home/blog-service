@@ -17,7 +17,7 @@ func (t Tag) Count(db *gorm.DB) (int, error) {
 	if t.Name != "" {
 		db = db.Where("name = ?", t.Name)
 	}
-	db = db.Where("state = ?", t.Name)
+	db = db.Where("state = ?", t.State)
 	err := db.Model(&t).Where("is_del = ?", 0).Count(&count).Error
 	if err != nil {
 		return 0, err

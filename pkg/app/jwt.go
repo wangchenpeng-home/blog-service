@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/wangchenpeng-home/blog-service/global"
+	"github.com/wangchenpeng-home/blog-service/pkg/util"
 	"time"
 )
 
@@ -22,8 +23,8 @@ func GenerateToken(appKey, appSecret string) (string, error) {
 	expireTime := nowTime.Add(global.JWTSetting.Expire)
 	token := jwt.New(jwt.SigningMethodHS256)
 	claims := Claims{
-		AppKey:    appKey,
-		AppSecret: appSecret,
+		AppKey:    util.EncodeMD5(appKey),
+		AppSecret: util.EncodeMD5(appSecret),
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
 			Issuer:    global.JWTSetting.Issuer,
