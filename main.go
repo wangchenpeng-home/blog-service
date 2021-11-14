@@ -52,7 +52,7 @@ func main() {
 	log.Printf("global.DatabaseSetting: %v", global.DatabaseSetting)
 
 	// 测试日志组件
-	global.Logger.Infof(context.TODO(),"%s: my-go-programming/%s", "eddycjy", "blog-service")
+	global.Logger.Infof(context.TODO(),"%s: programming/%s", "wcp", "blog-service")
 
 	s.ListenAndServe()
 }
