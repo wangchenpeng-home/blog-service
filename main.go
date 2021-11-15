@@ -4,6 +4,11 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"log"
+	"net/http"
+	"strings"
+	"time"
+
 	"github.com/wangchenpeng-home/blog-service/global"
 	"github.com/wangchenpeng-home/blog-service/internal/model"
 	"github.com/wangchenpeng-home/blog-service/internal/routers"
@@ -11,10 +16,6 @@ import (
 	setting2 "github.com/wangchenpeng-home/blog-service/pkg/setting"
 	"github.com/wangchenpeng-home/blog-service/pkg/tracer"
 	"gopkg.in/natefinch/lumberjack.v2"
-	"log"
-	"net/http"
-	"strings"
-	"time"
 )
 
 var (
