@@ -6,7 +6,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
 	"strings"
+	"syscall"
 	"time"
 
 	"github.com/wangchenpeng-home/blog-service/global"
@@ -61,14 +64,28 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	log.Printf("global.ServerSetting: %v", global.ServerSetting)
-	log.Printf("global.AppSetting: %v", global.AppSetting)
-	log.Printf("global.DatabaseSetting: %v", global.DatabaseSetting)
+	go func() {
+		err := s.ListenAndServe()
+		if err != nil && err != http.ErrServerClosed {
+			log.Fatalf("s.ListenAndServe err: %v", err)
+		}
+	}()
 
-	// 测试日志组件
-	global.Logger.Infof(context.TODO(), "%s: programming/%s", "wcp", "blog-service")
+	//等待信号中断
+	quit := make(chan os.Signal)
+	//接受 syscall.SIGINT 和 syscall.SIGTERM 信号
+	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
+	<-quit
+	log.Println("Shutting down server...")
 
-	s.ListenAndServe()
+	//最大时间控制，用于通知该服务端它有5秒的时间来处理原有的请求
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	if err := s.Shutdown(ctx); err != nil {
+		log.Fatal("Server forced to shutdown:", err)
+	}
+
+	log.Println("Server exiting")
 }
 
 func setupSetting() error {
